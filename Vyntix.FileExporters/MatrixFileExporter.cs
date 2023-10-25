@@ -1,6 +1,6 @@
 ﻿namespace LeaderAnalytics.Vyntix.FileExporters;
 
-public class MatrixFileExporter
+public class MatrixFileExporter : IFileExporter
 {
     public AsyncResult<string[,]> ToArray(FileExportArgs args, List<Vintage> vintages)
     {

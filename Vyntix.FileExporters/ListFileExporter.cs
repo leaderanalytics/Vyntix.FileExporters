@@ -4,7 +4,7 @@ using System.Globalization;
 
 namespace LeaderAnalytics.Vyntix.FileExporters;
 
-public class ListFileExporter
+public class ListFileExporter : IFileExporter
 {
     private IEnumerable<CSVVintatage> BuildVintages(FileExportArgs args, List<Vintage> vintages)
     {
