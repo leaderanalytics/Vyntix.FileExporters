@@ -1,0 +1,40 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+	  <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+	  <IncludeSymbols>true</IncludeSymbols>
+	  <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+	  <Authors>Leader Analytics</Authors>
+	  <Company>Leader Analytics</Company>
+	  <Product>Vyntix.FileExporters</Product>
+	  <Description>Utilities for exporting data to CSV, Excel, etc.</Description>
+	  <Copyright>2023 Leader Analytics</Copyright>
+	  <PackageProjectUrl>https://github.com/leaderanalytics/Vyntix.FileExporters</PackageProjectUrl>
+	  <PackageIcon>VyntixLogo.png</PackageIcon>
+	  <RepositoryUrl>https://github.com/leaderanalytics/Vyntix.FileExporters.git</RepositoryUrl>
+	  <RepositoryType>git</RepositoryType>
+	  <PackageTags>observations, vintages, CSV, Excel, export.</PackageTags>
+	  <PackageReleaseNotes>See Repository</PackageReleaseNotes>
+	  <PackageId>LeaderAnalytics.Vyntix.FileExporters</PackageId>
+	  <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+  </PropertyGroup>
+
+	<PropertyGroup>
+		<RootNamespace>LeaderAnalytics.Vyntix.FileExporters</RootNamespace>
+		<AssemblyName>LeaderAnalytics.Vyntix.FileExporters</AssemblyName>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="..\VyntixLogo.png" Pack="true" PackagePath="\" />
+		<None Include="..\LICENSE.md" Pack="true" PackagePath="\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="ClosedXML" Version="0.102.1" />
+	  <PackageReference Include="CsvHelper" Version="30.0.1" />
+	  <PackageReference Include="LeaderAnalytics.Vyntix.Model" Version="2.0.5" />
+	</ItemGroup>
+</Project>
