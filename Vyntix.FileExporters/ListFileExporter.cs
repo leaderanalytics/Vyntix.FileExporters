@@ -4,7 +4,7 @@ using System.Globalization;
 
 namespace LeaderAnalytics.Vyntix.FileExporters;
 
-public class ListFileExporter : IFileExporter
+public class ListFileExporter
 {
     private IEnumerable<CSVVintatage> BuildVintages(FileExportArgs args, List<Vintage> vintages)
     {
@@ -47,9 +47,9 @@ public class ListFileExporter : IFileExporter
         return observations;
     }
 
-    public AsyncResult<string> ToCSV(FileExportArgs args, List<Vintage> vintages)
+    public AsyncResult<byte[]> ToCSV(FileExportArgs args, List<Vintage> vintages)
     {
-        AsyncResult<string> result = new();
+        AsyncResult<byte[]> result = new();
 
         if (!(vintages?.Any() ?? false))
             return result;
@@ -60,10 +60,8 @@ public class ListFileExporter : IFileExporter
         {
             using (var writer = new StreamWriter(stream))
             using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
-            {
-                csv.WriteRecords(observations);
-            }
-            result.Result = System.Text.Encoding.UTF8.GetString(stream.ToArray());
+            csv.WriteRecords(observations);
+            result.Result = stream.ToArray();
         }
         result.Success = true;
         return result;

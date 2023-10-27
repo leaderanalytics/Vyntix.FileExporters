@@ -1,6 +1,6 @@
 ﻿namespace LeaderAnalytics.Vyntix.FileExporters;
 
-public class MatrixFileExporter : IFileExporter
+public class MatrixFileExporter 
 {
     public AsyncResult<string[,]> ToArray(FileExportArgs args, List<Vintage> vintages)
     {
@@ -63,9 +63,9 @@ public class MatrixFileExporter : IFileExporter
         return result;
     }
 
-    public AsyncResult<string> ToCSV(FileExportArgs args, List<Vintage> vintages)
+    public AsyncResult<byte[]> ToCSV(FileExportArgs args, List<Vintage> vintages)
     {
-        AsyncResult<string> result = new AsyncResult<string>();
+        AsyncResult<byte[]> result = new();
         AsyncResult<string[,]> matrixResult = ToArray(args, vintages);
 
         if (!matrixResult.Success)
@@ -90,7 +90,7 @@ public class MatrixFileExporter : IFileExporter
 
             sb.AppendLine();
         }
-        result.Result = sb.ToString();
+        result.Result = Encoding.Unicode.GetBytes(sb.ToString());
         result.Success = true;
         return result;
     }

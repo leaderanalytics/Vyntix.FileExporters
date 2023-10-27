@@ -7,6 +7,5 @@ using System.Threading.Tasks;
 namespace LeaderAnalytics.Vyntix.FileExporters;
 public interface IFileExporter
 {
-    AsyncResult<string> ToCSV(FileExportArgs args, List<Vintage> vintages);
-    AsyncResult<byte[]> ToExcel(FileExportArgs args, List<Vintage> vintages);
+    AsyncResult<byte[]> Export(FileExportArgs args, List<Vintage> vintages);
 }

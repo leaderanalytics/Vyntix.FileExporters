@@ -11,7 +11,7 @@ public class ListTests : BaseTest
     public async Task SortAscendingTest()
     {
         FileExportArgs args = new() { VintSortDirection = SortDirection.Ascending, ObsSortDirection = SortDirection.Ascending };
-        AsyncResult<string> result = new ListFileExporter().ToCSV(args, vintages);
+        AsyncResult<byte[]> result = new ListFileExporter().ToCSV(args, vintages);
         Assert.IsTrue(result.Success);
         Assert.IsNotNull(result.Result);
         
@@ -36,5 +36,15 @@ public class ListTests : BaseTest
         Assert.IsTrue(result.Success);
         Assert.IsNotNull(result.Result);
         System.IO.File.WriteAllBytes("ListTest.xlsx", result.Result);
+    }
+
+    [Test]
+    public async Task CsvTest()
+    {
+        FileExportArgs args = new() { VintSortDirection = SortDirection.Descending, ObsSortDirection = SortDirection.Descending };
+        AsyncResult<byte[]> result = new MatrixFileExporter().ToCSV(args, vintages);
+        Assert.IsTrue(result.Success);
+        Assert.IsNotNull(result.Result);
+        System.IO.File.WriteAllBytes("MatrixTest.csv", result.Result);
     }
 }
